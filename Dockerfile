@@ -6,7 +6,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 WORKDIR /OnePose_Plus_Plus_Spot/submodules/DeepLM
 RUN sh example.sh
-COPY ./OnePose_Plus_Plus_Spot/backup/deeplm_init_backup.py /OnePose_Plus_Plus_Spot/submodules/DeepLM/__init__.py
+RUN cp /OnePose_Plus_Plus_Spot/backup/deeplm_init_backup.py /OnePose_Plus_Plus_Spot/submodules/DeepLM/__init__.py
 RUN mkdir /OnePose_Plus_Plus_Spot/weights
 WORKDIR /OnePose_Plus_Plus_Spot/weights
 RUN wget https://zenodo.org/record/8086894/files/LoFTR_wsize9.ckpt?download=1
