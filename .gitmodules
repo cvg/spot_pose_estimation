@@ -1,0 +1,3 @@
+[submodule "OnePose_Plus_Plus_Spot"]
+	path = OnePose_Plus_Plus_Spot
+	url = https://github.com/Maemaemaeko/OnePose_Plus_Plus_Spot.git
