@@ -10,7 +10,8 @@ WORKDIR /OnePose_Plus_Plus_Spot
 RUN pip install --upgrade pip
 RUN pip install -r /OnePose_Plus_Plus_Spot/requirements.txt
 WORKDIR /OnePose_Plus_Plus_Spot/submodules/DeepLM
-RUN sh example.sh
+RUN mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DWITH_CUDA=ON && make -j8
+# RUN sh example.sh
 RUN cp /OnePose_Plus_Plus_Spot/backup/deeplm_init_backup.py /OnePose_Plus_Plus_Spot/submodules/DeepLM/__init__.py
 RUN mkdir /OnePose_Plus_Plus_Spot/weights
 WORKDIR /OnePose_Plus_Plus_Spot/weights
