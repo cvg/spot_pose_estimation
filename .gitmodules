@@ -1,3 +1,9 @@
 [submodule "OnePose_Plus_Plus_Spot"]
 	path = OnePose_Plus_Plus_Spot
 	url = https://github.com/Maemaemaeko/OnePose_Plus_Plus_Spot.git
+[submodule "Monocluar-Pose-Estimation-Pipeline-for-Spot"]
+	path = Monocluar-Pose-Estimation-Pipeline-for-Spot
+	url = https://github.com/mizeller/Monocluar-Pose-Estimation-Pipeline-for-Spot.git
+[submodule "colmap"]
+	path = colmap
+	url = https://github.com/colmap/colmap.git
