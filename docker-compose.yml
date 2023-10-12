@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  spot_pose_estimation:
+    network_mode: host
+    environment:
+    - DISPLAY=$DISPLAY
+    - QT_X11_NO_MITSHM=1
+    - XAUTHORITY=/tmp/.docker.xauth
+    - SSH_AUTH_SOCK=/ssh-agent
+    - NVIDIA_VISIBLE_DEVICES=all
+    - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+    - '/tmp/.X11-unix:/tmp/.X11-unix'
+    - ${SSH_AUTH_SOCK}:/ssh-agent
+    - '/:/host:ro'
+    # - './run.py:/OnePose_Plus_Plus_Spot/run.py'
+    - './SpotRobot-annotate:/scratch_net/biwidl215/myamaguchi/OnePose_Plus_Plus/data/demo/onepose_6/onepose_6-annotate'
+    devices:
+    - /dev/dri
+    privileged: true
+    runtime: nvidia
+    shm_size: '50gb'
+    image: spot_pose_estimation
+    command: python3 /OnePose_Plus_Plus_Spot/run.py
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities:
+                - gpu
+              driver: nvidia
