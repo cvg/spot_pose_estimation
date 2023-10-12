@@ -67,6 +67,7 @@ COPY ./OnePose_Plus_Plus_Spot /OnePose_Plus_Plus_Spot
 WORKDIR /OnePose_Plus_Plus_Spot
 RUN python3 -m pip install -r /OnePose_Plus_Plus_Spot/requirements.txt
 WORKDIR /OnePose_Plus_Plus_Spot/submodules/DeepLM
+RUN mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DWITH_CUDA=ON && make -j8
 RUN CUDACXX=/usr/local/cuda-11.3/bin/nvcc sh example.sh
 RUN cp /OnePose_Plus_Plus_Spot/backup/deeplm_init_backup.py /OnePose_Plus_Plus_Spot/submodules/DeepLM/__init__.py
 RUN mkdir /OnePose_Plus_Plus_Spot/weight
