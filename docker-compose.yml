@@ -14,8 +14,12 @@ services:
     - '/tmp/.X11-unix:/tmp/.X11-unix'
     - ${SSH_AUTH_SOCK}:/ssh-agent
     - '/:/host:ro'
-    # - './run.py:/OnePose_Plus_Plus_Spot/run.py'
-    - './SpotRobot-annotate:/scratch_net/biwidl215/myamaguchi/OnePose_Plus_Plus/data/demo/onepose_6/onepose_6-annotate'
+    - './inference.py:/OnePose_Plus_Plus_Spot/inference.py'
+    - './outputs:/OnePose_Plus_Plus_Spot/outputs'
+    # - './SpotRobot-annotate:/scratch_net/biwidl215/myamaguchi/OnePose_Plus_Plus/data/demo/onepose_6/onepose_6-annotate'
+    # - './ros2/spot_pose_estimation:/ros2_ws/src/spot_pose_estimation'
+    # - '/media/blumh/data/spot_pose_estimation/spot-synthetic-dataset:/data'
+    # - './sfm_model:/OnePose_Plus_Plus_Spot/data'
     devices:
     - /dev/dri
     privileged: true
