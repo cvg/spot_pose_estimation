@@ -200,7 +200,9 @@ COPY ./data/SpotRobot /data/SpotRobot
 
 WORKDIR /ros2_ws
 COPY ./ros2/spot_pose_estimation /ros2_ws/src/spot_pose_estimation
-RUN . /opt/ros/foxy/setup.sh && colcon build --packages-select spot_pose_estimation
+RUN . /opt/ros/foxy/setup.sh \
+    && python3 -m pip install pytransform3d \
+    && colcon build --packages-select spot_pose_estimation
 
 WORKDIR /OnePose_Plus_Plus_Spot
 COPY ./ros_entrypoint.sh /OnePose_Plus_Plus_Spot/ros_entrypoint.sh
